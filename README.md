@@ -1,35 +1,47 @@
 # Hybrid AI Android Assistant
 
-A hybrid AI assistant built using **Kotlin, Jetpack Compose, and FastAPI** that intelligently routes queries between on-device logic and a cloud-based LLM.
+A **Hybrid AI-powered Android Assistant** built using **Kotlin, Jetpack Compose, and FastAPI** that intelligently routes user queries between local processing and a cloud-based LLM.
 
-## Architecture
+The system demonstrates a modern **agent-style AI architecture** where a decision engine determines whether a query should be handled locally or sent to a cloud backend.
+
+---
+
+# Architecture
 
 The application follows a **hybrid AI architecture** where a decision engine determines whether a query should be processed locally or sent to the cloud.
 
+```
 User Query
-↓
+    ↓
 Android App (Jetpack Compose)
-↓
+    ↓
 Intent Classifier
-↓
+    ↓
 Decision Engine
-├── Simple Queries → Local Processing
-└── Complex Queries → FastAPI Backend → LLM
+    ├── Simple Queries → Local Processing
+    └── Complex Queries → FastAPI Backend → LLM
+```
 
-## Features
+---
+
+# Features
 
 * Modern Android UI built with **Jetpack Compose**
-* Hybrid AI routing using a **decision engine**
-* FastAPI backend for LLM interaction
+* **Hybrid AI routing system**
+* Intent classification for query understanding
+* Decision engine to route queries locally or to the cloud
+* **FastAPI backend** for LLM communication
 * Markdown rendering for AI responses
-* Typing indicator for AI responses
-* Clean chat UI with message bubbles
-* Retrofit-based networking layer
+* AI typing indicator
+* Clean chat interface with message bubbles
+* Retrofit networking layer
 * Secure API key management using environment variables
 
-## Tech Stack
+---
 
-### Mobile App
+# Tech Stack
+
+## Android Application
 
 * Kotlin
 * Jetpack Compose
@@ -37,61 +49,130 @@ Decision Engine
 * Coroutines
 * MVVM Architecture
 
-### Backend
+## Backend
 
-* FastAPI
 * Python
+* FastAPI
 * OpenAI API
+* Uvicorn
 
-## Project Structure
+---
+
+# Project Structure
 
 ```
 hybrid-ai-android-assistant
 │
 ├── HybridAIAssistant
-│   └── Android App (Jetpack Compose)
+│   ├── app
+│   │   ├── data
+│   │   │   └── remote
+│   │   ├── decision
+│   │   ├── intent
+│   │   ├── ui
+│   │   │   └── chat
+│   │   └── MainActivity.kt
+│   │
+│   └── build.gradle
 │
 ├── backend
 │   ├── main.py
-│   └── API integration
+│   └── requirements.txt
 │
 └── README.md
 ```
 
-## Setup
+---
 
-### Backend
+# Setup Instructions
+
+## Backend Setup
+
+Navigate to the backend directory:
 
 ```
 cd backend
+```
+
+Install dependencies:
+
+```
 pip install -r requirements.txt
+```
+
+Create an environment variable for the API key:
+
+```
+OPENAI_API_KEY=your_api_key
+```
+
+Run the FastAPI server:
+
+```
 uvicorn main:app --reload
 ```
 
-Backend runs on:
+The backend will start at:
 
 ```
 http://localhost:8000
 ```
 
-### Android App
+You can view the API documentation at:
 
-Open the project in **Android Studio** and run the application on an emulator or device.
+```
+http://localhost:8000/docs
+```
 
-The Android app communicates with the backend using:
+---
+
+## Android App Setup
+
+Open the project in **Android Studio**.
+
+Run the application on an emulator or Android device.
+
+The Android application communicates with the backend using:
 
 ```
 http://10.0.2.2:8000
 ```
 
-## Future Improvements
+This allows the Android emulator to access the local backend server.
+
+---
+
+# Screenshots
+
+Add screenshots of the chat interface here.
+
+Example:
+
+```
+screenshots/chat_ui.png
+```
+
+---
+
+# Future Improvements
 
 * On-device LLM inference
-* Streaming responses from the backend
-* Voice-based interaction
+* Streaming responses from backend
+* Voice-based AI interaction
 * RAG-based knowledge retrieval
+* Local AI inference using quantized models
 
-## Author
+---
 
-Antony Joy
-Associate Software Developer | Android Developer
+# Author
+
+**Antony Joy**
+
+Associate Software Developer
+Android Developer | AI Enthusiast
+
+---
+
+# License
+
+This project is for educational and experimental purposes.
